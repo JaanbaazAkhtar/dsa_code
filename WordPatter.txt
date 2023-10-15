@@ -1,0 +1,28 @@
+import java.util.*;
+class Solution {
+    public static void main(String[] args) {
+        System.out.println("This is solution "+ wordPattern("aaa", "aa aa aa aa"));
+    }
+    public static boolean wordPattern(String pattern, String s) {
+          Map<Character, String> map = new HashMap<>();
+        int lastIndex = 0;
+        String wd[] = s.split(" ");
+        if(pattern.length() != wd.length){
+            return false;
+        }
+        for(int i=0; i<pattern.length(); i++) {
+            char ch = pattern.charAt(i);
+            String g = wd[i];
+           if(map.containsKey(ch)) {
+                    if(!map.get(ch).equals(g)){
+                        return false;
+                    }
+                } else {
+                    if(map.containsValue(g)) return false;
+                    map.put(ch, g);
+                }
+                // System.out.println();
+        }
+     return true;
+    }
+}
